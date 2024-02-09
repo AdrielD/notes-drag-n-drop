@@ -10,6 +10,7 @@ interface NoteInterface {
 
 const Note = ({ x = 0, y = 0, w = 0, h = 0, }: NoteInterface) => {
   const noteRef = useRef<any>(null);
+  const textareaRef = useRef<any>(null);
   const [drag, setOnDrag] = useState(false);
   const [position, setPosition] = useState({
     deltaX: 0,
@@ -24,6 +25,13 @@ const Note = ({ x = 0, y = 0, w = 0, h = 0, }: NoteInterface) => {
     note.style.top = position.y;
     note.style.width = `${w}px`;
     note.style.height = `${h}px`;
+    textareaRef.current.style.width = `${w}px`;
+    textareaRef.current.style.height = `${h}px`;
+
+    new ResizeObserver(() => {
+      note.style.width = textareaRef.current.style.width;
+      note.style.height = textareaRef.current.style.height;
+    }).observe(textareaRef.current);
   }, []);
 
   const handleMouseDown = (e :any) => {
@@ -45,6 +53,7 @@ const Note = ({ x = 0, y = 0, w = 0, h = 0, }: NoteInterface) => {
 
   const handleMouseMove = (e: any) => {
     if (drag) {
+      console.log(e.clientX, e.clientY, position);
       const x = `${e.clientX - position.deltaX}px`;
       const y = `${e.clientY - position.deltaY}px`;
       const note = noteRef.current;
@@ -69,9 +78,9 @@ const Note = ({ x = 0, y = 0, w = 0, h = 0, }: NoteInterface) => {
       ref={noteRef}
     >
       <textarea
+        ref={textareaRef}
         placeholder="Type something you don't want to forget later"
-        onClick={e => e.stopPropagation() }
-        />
+      />
     </div>
   );
 }

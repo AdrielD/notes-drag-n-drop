@@ -6,8 +6,6 @@
   color: #000;
   
   position: absolute;
-  top: 0;
-  left: 0;
 
   font-size: 1rem;
   font-weight: 400;
@@ -18,5 +16,11 @@
 .note textarea{
   width: inherit;
   background-color: unset;
-  resize: vertical;
+  /* resize: vertical; */
+}
+
+.note .resize_handle {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #000;
 }

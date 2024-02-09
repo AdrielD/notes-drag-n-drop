@@ -22,7 +22,7 @@ const Notepad = () => {
     return (
       <select onChange={e => setNoteSize(noteSizes[e.target.value])}>
         <option value="small">Small</option>
-        <option selected value="medium">Medium</option>
+        <option value="medium">Medium</option>
         <option value="large">Large</option>
       </select>
     )
