@@ -1,15 +1,14 @@
-import { useState } from 'react';
+import { useState, ReactElement } from 'react';
+import Note from '../Note';
 import './style.css';
 
 const Notepad = () => {
-  const [notes, setNotes] = useState<string[]>([]);
+  const [notes, setNotes] = useState<ReactElement[]>([]);
 
   const handleDoublClick = () => {
-    console.log('Ahoy! Note created!');
-    setNotes([...notes, 'newnote']);
+    const note = <Note key={new Date().getTime()} />;
+    setNotes([...notes, note]);
   }
-
-  console.log(notes);
 
   return (
     <div
@@ -19,6 +18,9 @@ const Notepad = () => {
       <h1>
         Double click anywhere to create a new note
       </h1>
+      {
+        notes.map(note => note)
+      }
     </div>
   );
 }

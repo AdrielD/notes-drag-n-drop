@@ -1,0 +1,22 @@
+.note {
+  width: 300px;
+  height: 300px;
+
+  background-color: #ccff00;
+  color: #000;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  user-select: text;
+}
+
+.note textarea{
+  width: inherit;
+  background-color: unset;
+  resize: vertical;
+}
