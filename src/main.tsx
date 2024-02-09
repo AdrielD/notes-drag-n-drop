@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import NotePad from './components/NotePad';
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    Ahoy!
+    <NotePad />
   </React.StrictMode>,
 )
